@@ -14,7 +14,7 @@ defmodule Jkbot.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :yocingo, :exjsx, :trot]]
+    [applications: [:logger, :yocingo, :exjsx, :trot, :floki]]
   end
 
   # Dependencies can be Hex packages:
@@ -29,7 +29,8 @@ defmodule Jkbot.Mixfile do
   defp deps do
     [
       {:yocingo, ">= 0.0.1"},
-      {:trot, github: "hexedpackets/trot"}
+      {:trot, github: "hexedpackets/trot"},
+      {:floki, ">= 0.8.0"}
     ]
   end
 end

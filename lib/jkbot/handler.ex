@@ -1,9 +1,27 @@
 defmodule Handler do
   def parse(text, from) do
-    if text == "призываю чв" || text == "@Jkr_bot призываю чв" do
-      "http://cs9568.vk.me/u165996337/-6/x_646e2752.jpg"
+    randomz = [
+      ", не знаю",
+      ", в другой раз"
+    ]
+
+    answer = answer(text)
+    if answer do
+      answer
     else
-      from <> ", не понял тебя"
+      from <> Enum.random(randomz)
     end
+  end
+
+  def answer("курс рубля?") do
+    Ratescrapper.getRubRate()
+  end
+
+  def answer("курс тенге?") do
+    Ratescrapper.getKztRate()
+  end
+
+  def answer(_question) do
+    nil
   end
 end
