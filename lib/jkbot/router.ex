@@ -9,9 +9,8 @@ defmodule Jkbot.Router do
     "Thank you for your question."
   end
 
-  get "/vkbot" do
-    updates = Yocingo.get_updates
-    IO.puts(updates)
+  post "/vkbot" do
+    IO.puts("TEST")
   end
 
   # Redirect the incoming request
