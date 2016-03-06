@@ -1,6 +1,5 @@
 defmodule Jkbot.Router do
   use Trot.Router
-  use Yocingo
 
   # Setup a static route to priv/static/assets
   static "/css", "assets"
