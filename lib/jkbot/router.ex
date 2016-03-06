@@ -6,19 +6,15 @@ defmodule Jkbot.Router do
   static "/css", "assets"
 
   post "/vkbot" do
-	{:ok, ic, _none} = Plug.Conn.read_body(conn)
-	{:ok, data} = JSX.decode ic
-	if data["message"]["chat"] != nil do
-		IO.inspect data["message"]
-		id = data["message"]["chat"]["id"]
-		text = data["message"]["text"]
-		from = data["message"]["from"]["first_name"]
-		if text == "призываю чв" || text == "@Jkr_bot призываю чв" do
-			Yocingo.send_message(id, "http://cs9568.vk.me/u165996337/-6/x_646e2752.jpg")
-		else
-			Yocingo.send_message(id, from <> " пошел к х.ям")
-		end
-	end
+	   {:ok, data, _none} = Plug.Conn.read_body(conn)
+	   {:ok, data} = JSX.decode data
+
+     if data["message"]["chat"] != nil do
+		     id   = data["message"]["chat"]["id"]
+		     text = data["message"]["text"]
+		     from = data["message"]["from"]["first_name"]
+         Yocingo.send_message(id, Handler.parse(text, from))
+     end
   end
 
   import_routes Trot.NotFound
