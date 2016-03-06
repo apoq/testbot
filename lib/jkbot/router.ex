@@ -9,7 +9,7 @@ defmodule Jkbot.Router do
     "Thank you for your question."
   end
 
-  post "/vkbot" do
+  get "/vkbot" do
     updates = Yocingo.get_updates
     IO.puts(updates)
   end
