@@ -1,5 +1,6 @@
 defmodule Jkbot.Router do
   use Trot.Router
+  use Yocingo
 
   # Setup a static route to priv/static/assets
   static "/css", "assets"
@@ -7,6 +8,11 @@ defmodule Jkbot.Router do
   # Sets the status code to 200 with a text body
   get "/text" do
     "Thank you for your question."
+  end
+
+  post "/vkbot" do
+    updates = Yocingo.get_updates
+    IO.puts(updates)
   end
 
   # Redirect the incoming request
