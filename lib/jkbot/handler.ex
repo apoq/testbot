@@ -5,7 +5,7 @@ defmodule Handler do
       ", не понял тебя",
     ]
 
-    text = String.replace(text, "@Jkr_bot", "")
+    text = String.replace(text, "@sample_demo_bot", "")
             |> String.strip
             |> String.downcase
 
@@ -19,10 +19,6 @@ defmodule Handler do
 
   def answer("расскажи стишок") do
     Poetryscrapper.getPoetry()
-  end
-
-  def answer("призываю чв") do
-     "http://cs9568.vk.me/u165996337/-6/x_646e2752.jpg"
   end
 
   def answer("курс рубля?") do
